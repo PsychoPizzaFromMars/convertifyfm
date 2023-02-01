@@ -1,5 +1,3 @@
-// const CONVERTIFY_API_BASE_URL = "http://localhost:8000";
-// const CONVERTIFY_API_BASE_URL = "https://convertifyfm.onrender.com";
 const CONVERTIFY_API_BASE_URL = process.env.REACT_APP_CONVERTIFY_API_BASE_URL
 
 const makeRequest = async function ({

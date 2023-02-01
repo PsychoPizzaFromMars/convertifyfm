@@ -1,7 +1,6 @@
-import {React, useRef } from 'react'
+import {React } from 'react'
 
-function SubmitPlaylistForm({ handleSubmit, handleInputChange, formData, ref }) {
-    const scollToRef = useRef();
+function SubmitPlaylistForm({ handleSubmit, handleInputChange, formData}) {
     return (
         <div className="form-container">
             <form id="playlist-submit-form" className="border-comic" onSubmit={handleSubmit}>
