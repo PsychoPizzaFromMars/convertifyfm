@@ -1,14 +1,44 @@
-import React from 'react'
+import React, { useEffect } from "react";
+import spotifyIcon from "../../images/spotify-icon.svg";
+import { makeRequest } from "../../services/fetchData";
+
+const CONVERTIFY_API_BASE_URL = process.env.REACT_APP_CONVERTIFY_API_BASE_URL;
+let loginSpotifyURL;
 
 function Home() {
-  return (
-    <>
-    <div>
-        <h1>Welcome to ConvertifyFM</h1>
-        <button id='btn-spotify' className="login" onClick={() => window.location='https://accounts.spotify.com/authorize?client_id=9a193d42fcb34f4bb0c92abca670c310&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fcallback&scope=user-read-email+user-library-read+playlist-read-private+user-top-read+playlist-modify-private+playlist-modify-public'}>Login Spotify</button>
-    </div>
-    </>
-  )
+    useEffect(() => {
+        makeRequest({
+            endpoint: "/login",
+            other: {
+                mode: "cors",
+                include: "credentials",
+            },
+        }).then((data) => {
+            loginSpotifyURL = data.url;
+        });
+    }, []);
+    return (
+        <>
+            <div className="welcome-hero">
+                <h1 className="welcome-title">Welcome to ConvertifyFM</h1>
+                <div className="welcome-desc">
+                    <h3>Rediscover your music.</h3>
+                    <h3>
+                        Convert your LastFM charts of different time periods
+                        into Spotify playlists.
+                    </h3>
+                    <h3>Create playlists of your top Spotify listenings.</h3>
+                </div>
+
+                <button
+                    className="login btn-spotify"
+                    onClick={() => (window.location = `${loginSpotifyURL}`)}
+                >
+                    <img src={spotifyIcon} alt="" /> Login
+                </button>
+            </div>
+        </>
+    );
 }
 
-export default Home
+export default Home;
