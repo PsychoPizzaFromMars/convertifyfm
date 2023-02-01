@@ -286,6 +286,7 @@ button {
     align-items: center;
     justify-content: center;
     height: 1.5rem;
+    width: 100%;
     padding: 1rem 1rem;
     /* flex-grow: 1; */
     cursor: pointer;
