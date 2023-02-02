@@ -5,18 +5,7 @@ import { makeRequest } from "../../services/fetchData";
 const CONVERTIFY_API_BASE_URL = process.env.REACT_APP_CONVERTIFY_API_BASE_URL;
 let loginSpotifyURL;
 
-function Home() {
-    useEffect(() => {
-        makeRequest({
-            endpoint: "/login",
-            other: {
-                mode: "cors",
-                include: "credentials",
-            },
-        }).then((data) => {
-            loginSpotifyURL = data.url;
-        });
-    }, []);
+function Home(props) {
     return (
         <>
             <div className="welcome-hero">
@@ -32,7 +21,7 @@ function Home() {
 
                 <button
                     className="login btn-spotify"
-                    onClick={() => (window.location = `${loginSpotifyURL}`)}
+                    onClick={() => (window.location = `${props.loginURL}`)}
                 >
                     <img src={spotifyIcon} alt="" /> Login
                 </button>

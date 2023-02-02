@@ -47,7 +47,7 @@ export default function App() {
     const [userName, setUserName] = useState("");
     const [loginURL, setLoginURL] = useState("");
     let routes = [
-        { name: "Home", ref: "/", elem: () => <Home /> },
+        { name: "Home", ref: "/", elem: () => <Home loginURL={loginURL} /> },
         {
             name: "Time Period Top Charts",
             ref: "/lfm",
