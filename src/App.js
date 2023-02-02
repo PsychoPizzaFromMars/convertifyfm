@@ -51,7 +51,12 @@ export default function App() {
         {
             name: "Time Period Top Charts",
             ref: "/lfm",
-            elem: () => <TimePeriodTopChart />,
+            elem: () => (
+                <TimePeriodTopChart
+                    isSpotifyAuthenticated={isLoggedIn}
+                    loginURL={loginURL}
+                />
+            ),
         },
     ];
     useEffect(() => {
