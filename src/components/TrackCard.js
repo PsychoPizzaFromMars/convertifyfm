@@ -12,10 +12,10 @@ export default class TrackCard extends Component {
                     alt=""
                 />
                 <div className="Track-Info">
-                    <span title={`${item.artist} - ${item.name}`} className="Track-Name highlighted">
+                    <span title={`${item.artist} - ${item.name}`} className="Track-Name responsive-text highlighted">
                         {item.artist} - {item.name}{" "}
                     </span>
-                    <span className="Track-AlbumName highlighted">
+                    <span className="Track-AlbumName responsive-text highlighted">
                         {item.album_name}
                     </span>
                 </div>

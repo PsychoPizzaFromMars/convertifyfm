@@ -1,7 +1,3 @@
-/* * {
-  border: 1px solid blue;
-    
-} */
 * {
     margin: 0;
     padding: 0;
@@ -207,6 +203,7 @@ main {
 form.border-comic {
     margin: 0 auto;
     max-width: min(80vw, var(--input-width));
+    min-width: 245px;
     display: flex;
     flex-direction: column;
 }
@@ -276,7 +273,8 @@ input {
 .buttonsContainer {
     display: flex;
     gap: 0.5rem;
-    width: min(80vw, var(--input-width));
+    min-width: 245px;
+    /* width: min(80vw, var(--input-width)); */
     font-size: 14px;
 }
 
@@ -287,8 +285,7 @@ button {
     justify-content: center;
     height: 1.5rem;
     width: 100%;
-    padding: 1rem 1rem;
-    /* flex-grow: 1; */
+    padding: 1rem 0;
     cursor: pointer;
 
     background: var(--button-color);
@@ -310,7 +307,7 @@ button#submit-playlist {
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 1.5rem;
+    min-height: 1.5rem;
     padding: 1rem 5rem;
     margin: 25px 0 0 0;
     color: white;
@@ -334,11 +331,15 @@ button#submit-playlist {
     float: right;
 }
 
+@media screen and (max-width: 490px) {
+    button {
+        height: 3rem;
+    }
+}
 
 .nav-btn-spotify {
     margin: 5px;
     height: 40px;
-
 }
 
 .nav-btn-spotify img {
@@ -362,8 +363,8 @@ button#submit-playlist {
     border-radius: 27px;
     margin-bottom: 1rem;
 
-	height: 50px;
-	width: 170px;
+    height: 50px;
+    width: 170px;
 
     text-decoration: none;
 }
@@ -376,6 +377,7 @@ button#submit-playlist {
 
 .search-results {
     margin-bottom: 2rem;
+    max-width: min(80vw, var(--input-width));
 }
 
 #playlist-submit-form {
@@ -558,23 +560,29 @@ button#submit-playlist {
 }
 
 .welcome-hero {
-	display: flex;
-	flex-direction: column;
-	height: 80vh;
-	justify-content: center;
-}
-.welcome-title {
-	text-align: center;
-	margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    justify-content: center;
 }
 
-.welcome-desc > h3{
-	text-align: center;
-	font-family: var(--secondary-font);
-	font-weight: 400;
-	margin-bottom: 0.75rem;
-	margin-left: 1rem;
-	margin-right: 1rem;
+.welcome-title {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.welcome-desc > h3 {
+    text-align: center;
+    font-family: var(--secondary-font);
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.welcome-user {
+    text-align: center;
+    font-family: var(--secondary-font);
 }
 
 .fwidth {
