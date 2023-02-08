@@ -18,13 +18,27 @@ function Home(props) {
                     </h3>
                     <h3>Create playlists of your top Spotify listenings.</h3>
                 </div>
-
-                <button
-                    className="login btn-spotify"
-                    onClick={() => (window.location = `${props.loginURL}`)}
-                >
-                    <img src={spotifyIcon} alt="" /> Login
-                </button>
+                {props.isSpotifyAuthenticated ? (
+                    <div className="welcome-user">
+                        Logged in as {props.userName}{" "}
+                        <img
+                            src={props.userIcon}
+                            style={{
+                                borderRadius: "50%",
+                                height: "45px",
+                                translate: "15% 35%",
+                            }}
+                            alt=""
+                        />
+                    </div>
+                ) : (
+                    <button
+                        className="login btn-spotify"
+                        onClick={() => (window.location = `${props.loginURL}`)}
+                    >
+                        <img src={spotifyIcon} alt="" /> Login
+                    </button>
+                )}
             </div>
         </>
     );
