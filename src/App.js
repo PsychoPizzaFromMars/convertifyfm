@@ -5,11 +5,10 @@ import spotifyIcon from "./images/spotify-icon.svg";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import TimePeriodTopChart from "./pages/Lastfm/TimePeriodChart";
+import NotFound from "./pages/NotFound";
 import "./App.css";
 import Home from "./pages/Lastfm/Home";
 import { makeRequest } from "./services/fetchData";
-
-const CONVERTIFY_API_BASE_URL = process.env.REACT_APP_CONVERTIFY_API_BASE_URL;
 
 function LoginControl(props) {
     if (props.isLoggedIn) {
@@ -29,15 +28,17 @@ function LoginControl(props) {
             </li>
         );
     } else {
-        return (
-            <li
-                className="nav-item nav-btn-spotify"
-                style={{ cursor: "pointer" }}
-                onClick={props.onLoginClick}
-            >
-                <img src={spotifyIcon} alt="" /> Login{" "}
-            </li>
-        );
+        if (props.loginURL) {
+            return (
+                <li
+                    className="nav-item nav-btn-spotify"
+                    style={{ cursor: "pointer" }}
+                    onClick={props.onLoginClick}
+                >
+                    <img src={spotifyIcon} alt="" /> Login{" "}
+                </li>
+            );
+        }
     }
 }
 
@@ -47,7 +48,18 @@ export default function App() {
     const [userName, setUserName] = useState("");
     const [loginURL, setLoginURL] = useState("");
     let routes = [
-        { name: "Home", ref: "/", elem: () => <Home loginURL={loginURL} isSpotifyAuthenticated={isLoggedIn} userName={userName} userIcon={userIcon} /> },
+        {
+            name: "Home",
+            ref: "/",
+            elem: () => (
+                <Home
+                    loginURL={loginURL}
+                    isSpotifyAuthenticated={isLoggedIn}
+                    userName={userName}
+                    userIcon={userIcon}
+                />
+            ),
+        },
         {
             name: "Time Period Top Charts",
             ref: "/lfm",
@@ -78,8 +90,11 @@ export default function App() {
                         credentials: "include",
                     },
                 }).then((userdata) => {
-                    setUserIcon(userdata.images[0].url);
-                    setUserName(userdata.display_name);
+                    setUserIcon(
+                        userdata.images[0].url ??
+                            "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541"
+                    );
+                    setUserName(userdata.display_name ?? "Unknown");
                 });
             }
         });
@@ -174,6 +189,7 @@ export default function App() {
                             ></Route>
                         );
                     })}
+                    <Route path="*" element={<NotFound />} />
                 </Routes>
             </main>
         </Router>

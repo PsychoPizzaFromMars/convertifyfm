@@ -32,12 +32,16 @@ function Home(props) {
                         />
                     </div>
                 ) : (
-                    <button
-                        className="login btn-spotify"
-                        onClick={() => (window.location = `${props.loginURL}`)}
-                    >
-                        <img src={spotifyIcon} alt="" /> Login
-                    </button>
+                    props.loginURL && (
+                        <button
+                            className="login btn-spotify"
+                            onClick={() =>
+                                (window.location = `${props.loginURL}`)
+                            }
+                        >
+                            <img src={spotifyIcon} alt="" /> Login
+                        </button>
+                    )
                 )}
             </div>
         </>

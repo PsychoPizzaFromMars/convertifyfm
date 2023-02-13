@@ -282,7 +282,7 @@ export default function TimePeriodChart(props) {
                     <button type="submit" id="search">
                         Search
                     </button>
-                ) : (
+                ) : ( props.loginURL &&
                     <button
                         className="login btn-spotify fwidth"
                         onClick={() => (window.location = `${props.loginURL}`)}
