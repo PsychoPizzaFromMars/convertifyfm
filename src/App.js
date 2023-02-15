@@ -5,6 +5,8 @@ import spotifyIcon from "./images/spotify-icon.svg";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import TimePeriodTopChart from "./pages/Lastfm/TimePeriodChart";
+import LastfmTopTracks from "./pages/Lastfm/TopTracks"
+import SpotifyTopTracks from "./pages/Spotify/TopTracks"
 import NotFound from "./pages/NotFound";
 import "./App.css";
 import Home from "./pages/Lastfm/Home";
@@ -61,10 +63,30 @@ export default function App() {
             ),
         },
         {
-            name: "Time Period Top Charts",
-            ref: "/lfm",
+            name: "LastFM Time Period Top Charts",
+            ref: "/lastfm/timeperiodcharts",
             elem: () => (
                 <TimePeriodTopChart
+                    isSpotifyAuthenticated={isLoggedIn}
+                    loginURL={loginURL}
+                />
+            ),
+        },
+        {
+            name: "LastFM User's Top Tracks",
+            ref: "/lastfm/userstoptracks",
+            elem: () => (
+                <LastfmTopTracks
+                    isSpotifyAuthenticated={isLoggedIn}
+                    loginURL={loginURL}
+                />
+            ),
+        },
+        {
+            name: "Spotify User's Top Tracks",
+            ref: "/spotify/userstoptracks",
+            elem: () => (
+                <SpotifyTopTracks
                     isSpotifyAuthenticated={isLoggedIn}
                     loginURL={loginURL}
                 />
