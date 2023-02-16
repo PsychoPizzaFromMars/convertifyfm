@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import TimePeriodTopChart from "./pages/Lastfm/TimePeriodChart";
 import LastfmTopTracks from "./pages/Lastfm/TopTracks"
 import SpotifyTopTracks from "./pages/Spotify/TopTracks"
+import TextConverter from "./pages/Spotify/TextConverter"
 import NotFound from "./pages/NotFound";
 import "./App.css";
 import Home from "./pages/Lastfm/Home";
@@ -64,7 +65,7 @@ export default function App() {
         },
         {
             name: "LastFM Time Period Top Charts",
-            ref: "/lastfm/timeperiodcharts",
+            ref: "/lastfm/time-period-charts",
             elem: () => (
                 <TimePeriodTopChart
                     isSpotifyAuthenticated={isLoggedIn}
@@ -74,7 +75,7 @@ export default function App() {
         },
         {
             name: "LastFM User's Top Tracks",
-            ref: "/lastfm/userstoptracks",
+            ref: "/lastfm/users-top-tracks",
             elem: () => (
                 <LastfmTopTracks
                     isSpotifyAuthenticated={isLoggedIn}
@@ -84,9 +85,19 @@ export default function App() {
         },
         {
             name: "Spotify User's Top Tracks",
-            ref: "/spotify/userstoptracks",
+            ref: "/spotify/users-top-tracks",
             elem: () => (
                 <SpotifyTopTracks
+                    isSpotifyAuthenticated={isLoggedIn}
+                    loginURL={loginURL}
+                />
+            ),
+        },
+        {
+            name: "Text Converter",
+            ref: "/spotify/text-to-tracks",
+            elem: () => (
+                <TextConverter
                     isSpotifyAuthenticated={isLoggedIn}
                     loginURL={loginURL}
                 />

@@ -212,7 +212,7 @@ form p {
     text-align: center;
 }
 
-.border-comic input, .border-comic select {
+.border-comic input, .border-comic select, .border-comic textarea {
     margin: 0 auto;
     width: 100%;
     height: 1.5rem;
@@ -568,6 +568,12 @@ button#submit-playlist {
     flex-direction: column;
     height: 80vh;
     justify-content: center;
+}
+
+@media screen and (max-width:480px) {
+    .welcome-hero {
+        height: 60vh;
+    }
 }
 
 .welcome-title {
