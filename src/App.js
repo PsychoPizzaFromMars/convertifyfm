@@ -10,7 +10,7 @@ import SpotifyTopTracks from "./pages/Spotify/TopTracks"
 import TextConverter from "./pages/Spotify/TextConverter"
 import NotFound from "./pages/NotFound";
 import "./App.css";
-import Home from "./pages/Lastfm/Home";
+import Home from "./pages/Spotify/Home";
 import { makeRequest } from "./services/fetchData";
 
 function LoginControl(props) {

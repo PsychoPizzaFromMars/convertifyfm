@@ -1,9 +1,5 @@
 import React, { useEffect } from "react";
 import spotifyIcon from "../../images/spotify-icon.svg";
-import { makeRequest } from "../../services/fetchData";
-
-const CONVERTIFY_API_BASE_URL = process.env.REACT_APP_CONVERTIFY_API_BASE_URL;
-let loginSpotifyURL;
 
 function Home(props) {
     return (
